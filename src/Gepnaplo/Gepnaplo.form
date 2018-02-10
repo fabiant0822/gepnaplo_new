@@ -36,7 +36,7 @@
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jButton1" max="32767" attributes="0"/>
+                  <Component id="btnKesz" max="32767" attributes="0"/>
                   <Component id="txtIskola" pref="455" max="32767" attributes="0"/>
                   <Component id="txtOsztaly" max="32767" attributes="0"/>
                   <Component id="txtNev" max="32767" attributes="0"/>
@@ -70,7 +70,7 @@
                   <Component id="txtAllapot" max="32767" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jButton1" min="-2" pref="33" max="-2" attributes="0"/>
+              <Component id="btnKesz" min="-2" pref="33" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -152,7 +152,7 @@
         <Property name="text" type="java.lang.String" value="Rendben"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="btnKesz">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="18" style="0"/>
@@ -160,6 +160,9 @@
         <Property name="mnemonic" type="int" value="75"/>
         <Property name="text" type="java.lang.String" value="K&#xe9;sz"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnKeszActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

@@ -5,6 +5,8 @@
  */
 package Gepnaplo;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Fábián Tamás
@@ -17,6 +19,29 @@ public class Gepnaplo extends javax.swing.JFrame {
     public Gepnaplo() {
         initComponents();
         txtOsztaly.requestFocus();
+    }
+    
+    private String levag(String s, int h) {
+        if (s.length() > h)
+            return s.substring(0, h);
+        else
+            return s;
+    }
+    
+    private void kesz() {
+        String iskola = levag(txtIskola.getText().trim(), 40);
+        String osztaly = levag(txtOsztaly.getText().trim(), 8);
+        String nev = levag(txtNev.getText().trim(), 50);
+        String allapot = levag(txtAllapot.getText().trim(), 50);
+        if (iskola.equals("") || osztaly.equals("") ||
+                nev.equals("") || allapot.equals("")) {
+            JOptionPane.showMessageDialog(this, "Adj meg minden adatot!",
+                    "Hiba!", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        DB ab = new DB();
+        ab.beir(iskola, osztaly, nev, allapot);
+        System.exit(0);
     }
 
     /**
@@ -36,7 +61,7 @@ public class Gepnaplo extends javax.swing.JFrame {
         txtOsztaly = new javax.swing.JTextField();
         txtNev = new javax.swing.JTextField();
         txtAllapot = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        btnKesz = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Gépnapló");
@@ -84,9 +109,14 @@ public class Gepnaplo extends javax.swing.JFrame {
         txtAllapot.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtAllapot.setText("Rendben");
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButton1.setMnemonic('K');
-        jButton1.setText("Kész");
+        btnKesz.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnKesz.setMnemonic('K');
+        btnKesz.setText("Kész");
+        btnKesz.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnKeszActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -101,7 +131,7 @@ public class Gepnaplo extends javax.swing.JFrame {
                     .addComponent(Gep, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnKesz, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtIskola, javax.swing.GroupLayout.DEFAULT_SIZE, 455, Short.MAX_VALUE)
                     .addComponent(txtOsztaly)
                     .addComponent(txtNev)
@@ -131,7 +161,7 @@ public class Gepnaplo extends javax.swing.JFrame {
                     .addComponent(Gep, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtAllapot))
                 .addGap(18, 18, 18)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnKesz, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -152,6 +182,10 @@ public class Gepnaplo extends javax.swing.JFrame {
     private void txtIskolaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIskolaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtIskolaActionPerformed
+
+    private void btnKeszActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKeszActionPerformed
+        kesz();
+    }//GEN-LAST:event_btnKeszActionPerformed
 
     /**
      * @param args the command line arguments
@@ -193,7 +227,7 @@ public class Gepnaplo extends javax.swing.JFrame {
     private javax.swing.JLabel Iskola;
     private javax.swing.JLabel Nev;
     private javax.swing.JLabel Osztaly;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnKesz;
     private javax.swing.JTextField txtAllapot;
     private javax.swing.JTextField txtIskola;
     private javax.swing.JTextField txtNev;
